@@ -66,6 +66,23 @@
                 your comprehension and readiness to move forward successfully. &nbsp;</span></p>
         <hr style="page-break-before:always;display:none;">
         <p class="c1 c3"><span class="c0"></span></p>
+
+
+        <div class="quiz-container">
+            <h1>Texas 6-Hour Driving Course Quiz</h1>
+            <div id="question-container">
+                <p id="question-text">Question 1: What is the purpose of the Texas 6-hour Driving Course?</p>
+                <form id="quiz-form">
+                    <label><input type="radio" name="q1" value="a"> a) To obtain a learner's permit</label><br>
+                    <label><input type="radio" name="q1" value="b"> b) To learn advanced driving techniques</label><br>
+                    <label><input type="radio" name="q1" value="c"> c) To fulfill the requirement for a driver's
+                        license</label><br>
+                    <label><input type="radio" name="q1" value="d"> d) To improve parking skills</label><br>
+                    <button type="button" id="next-button" class="btn btn-info">Next</button>
+                </form>
+            </div>
+            <div id="result" style="display: none;"></div>
+        </div>
         <div class="d-flex pb-4 mt-5">
             <button class="btn btn-primary mx-auto">
                 <a href="./mod14.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN to Course</a>
@@ -82,6 +99,104 @@
         $(function ($) {
             $(".flipcard").flip();
         });
+
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        const questions = [
+            "What is the purpose of the Texas 6-hour Driving Course?",
+            "What is the first step in preparing for the driving experience?",
+            "What should you do when approaching a stop sign?",
+            "What does a solid yellow line on the road indicate?",
+            "What is the purpose of maintaining a safe space cushion while driving?",
+            "Which of the following is NOT an example of a distraction while driving?",
+            "How should you interact with pedestrians at a crosswalk?",
+            "What should you do when sharing the road with a commercial vehicle?",
+            "What are the consequences of driving under the influence in Texas?",
+            "How does alcohol affect driving abilities?",
+            "What should you do if you encounter an aggressive driver on the road?",
+            "How can you manage road rage situations?",
+            "What should you do when driving in heavy rain?",
+            "How can you handle a skid on icy roads?",
+            "The following are reason why is regular vehicle maintenance is important, except ___.",
+            "When should you check your tire pressure?",
+            "What is the impact of increased speed on stopping distance?",
+            "What affects braking distance?",
+            "What does it mean to be a responsible driver?",
+            "How can you promote positive driver behavior?",
+            "How do you stay disciplined when driving on expressways?",
+            "How do you deal with lower visibility at night?",
+            "How do you account for the sun when planning a long drive?",
+            "What are the challenges of driving uphill?",
+            "How do you drive safely downhill?",
+            "Approximately how many individuals died in the USA in 2019 due to drunk driving?",
+            "Why is drug-impaired driving a serious concern on the road?",
+            "What percent of alcohol-related traffic fatalities were underage?",
+            "What is the last stage of intoxication with the worst possible outcome?",
+            "What are the consequences of DUI?",
+
+
+
+
+        ];
+
+        const answers = [
+            ["a) To obtain a learner's permit", "b) To learn advanced driving techniques", "c) To fulfill the requirement for a driver's license", "d) To improve parking skills"],
+            ["a) Checking tire pressure", "b) Adjusting the seat and mirrors", "c) Starting the engine", "d) Buckling the seat belt"],
+            ["a) Checking tire pressure", "b) Adjusting the seat and mirrors", "c) Starting the engine", "d) Buckling the seat belt"],
+            // Add the rest of the answers here
+        ];
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+        });
+
+        function updateQuestion() {
+            questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+        }
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }
     </script>
 </body>
 
