@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Texas 6-Hour Defensive Driving Course</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://prospexlms.com/css/app.css">
+    <link rel="stylesheet" id="css-main" href="https://prospexlms.com/assets/css/oneui.min.css">
+</head>
+
+<body>
+    <style>
+        .course-content ul {
+            list-style: outside;
+        }
+
+        .course-content ol {
+            list-style: outside;
+            list-style-type: decimal;
+        }
+
+        .course-content img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon,
+        .carousel-indicators {
+            filter: invert(1);
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+    </style>
+    <div class="container course-content">
+        <div class="quiz-container">
+            <h1>Test Bank 3 v1</h1>
+            <div id="question-container" class="d-noe">
+                <p id="question-text">Question 1: What is the primary reason why driver’s license is a privilege?</p>
+                <form id="quiz-form">
+                    <label><input type="radio" name="q1" value="a"> a) To ensure that drivers are equipped with the
+                        knowledge and skills to drive safely</label><br>
+                    <label><input type="radio" name="q1" value="b"> b) To limit driving to commercial
+                        drivers</label><br>
+                    <label><input type="radio" name="q1" value="c"> c) To limit the number of vehicles on the
+                        road</label><br>
+                    <label><input type="radio" name="q1" value="d"> d) To promote public transportation</label><br>
+                </form>
+                <button type="button" id="next-button" class="btn btn-success my-3">Next</button>
+            </div>
+            <div id="result" style="display: none;"></div>
+        </div>
+        <div class="d-flex pb-4 mt-5">
+            <button class="btn btn-primary me-auto">
+                <a href="./TestQuiz.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 2</a>
+            </button>
+            <button class="btn btn-primary align-items-center justify-items-center">
+                <a href="./Test3.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 3</a>
+            </button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script>
+        $(function ($) {
+            $(".flipcard").flip();
+        });
+
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+
+        const questions = [
+            "What is the primary reason why driver’s license is a privilege?",
+            "If a driver obeys traffic rules, what are some of the consequences?",
+            "What is defensive driving?",
+            "Who has the greatest number of fatalities in car accidents in the USA in 2022?",
+            "What are the major contributors to unsafe driving?",
+            "How often does a person die on the road in Texas due to collisions?",
+            "What learnings and lessons can you take away from driving education programs?",
+            "How does adherence to speed limits improve safety on the road?",
+            "Which among the following areas can you drive 70 miles per hour?",
+            "What are the benefits of adhering to traffic signs and signals?",
+            "What best describes right-of-way?",
+            "Which among the following temporarily block the use of lanes?",
+            "You are permitted to drive on the improved shoulder on the following instances, EXCEPT:",
+            "When is a Certificate of Financial Responsibility required from driver?",
+            "These are the seats appropriate for 4 to 7 and 8 to 12 year olds.",
+            "Which road marking indicate no passing in both directions?",
+            "Which white marking on the road prohibit lane changes?",
+            "Aside from your safety and safety of passengers, what are the other benefits of defensive driving?",
+            "What is the defensive driving technique which actively observes and assesses your surroundings?",
+            "What does it mean to assess risk factors on the road?",
+            "How should you drive in rural or unfamiliar roads?",
+            "What aspect of driving involves understanding and adhering to speed limits, adjusting your speed according to road conditions, and maintaining a safe and appropriate speed for the situation?",
+            "What do you call the maximum limits that your vehicle’s speed cannot exceed?",
+            "What do you do when turning right at an intersection?",
+            "What should you do when entering roundabouts?",
+            "What should you do if you need to perform off-road recovery?",
+            "What are the contents of a vehicle emergency kit?",
+            "What are the more useful vehicle functions during foggy conditions?",
+            "Where are the more wind-prone areas?",
+            "How to stay safe during lightning strikes?"
+        ];
+
+        const answers = [
+            ["a) Driver education program", "b) Graduated Driver License Program", "c) Learner’s Permit Phase", "d) Commercial Driver’s Program"],
+            ["a) To create a safe environment for road users", "b) To encourage the use of public transportation", "c) To Lessen the traffic", "d) To Improve the flow of traffic"],
+            ["a) By not using signal lights", "b) By setting a good example of safe driving for others to follow", "c) Respond to aggressive drivers negatively", "d) Failure to adjust to different driving conditions"],
+            ["a) To understand traffic rules, regulations, and traffic signs in Texas", "b) To improve one’s visual field", "c) To improve driver reaction times", "d) To memorize the traffic routes"],
+            ["a) Because judgment is impaired and reaction times are slowed", "b) It’s hard to check the GPS", "c) Sensitivity to light is increased", "d) Drivers get a mental block"],
+            ["a) 200,000", "b) 100,000", "c) 485,000", "d) 700,000"],
+            ["a) Failure to yield", "b) Unsafe lane changes", "c) Failure to stay in a single lane", "d) Turning right on red"],
+            ["a) The economic loss is sometimes not covered by insurance", "b) The hospital can overcharge with the bill", "c) The consequences involve personal and societal costs that have long-term negative impact", "d) Emergency responders have to go overtime to address an emergency"],
+            ["a) It helps maintain a smooth traffic flow", "b) Lessens time to cross for pedestrians", "c) Improves decision making of drivers", "d) Prevents emergency breakdowns"],
+            ["a) Provide information, warn of hazards, or control traffic", "b) Encourage drivers to drive faster", "c) Limit the mobility of vehicles", "d) Control the pace of traffic"],
+            ["a) Regulatory signs", "b) Guide signs", "c) Construction signs", "d) Weather signs"],
+            ["a) 1.5 billion pieces of litter", "b) 800 million pieces of litter", "c) 100 million pieces of litter", "d) 300 million pieces of litter"],
+            ["a) Children may suffer from heat stroke", "b) Children may be overexposed to cellphone use", "c) Car music may not be entertaining enough", "d) The child will oversleep"],
+            ["a) Beating the red light", "b) Failure to yield", "c) Speeding", "d) Reckless driving"],
+            ["a) Reckless driving", "b) Cruise control", "c) Leisure driving", "d) Cross-country"],
+            ["a) Use peripheral vision, look ahead, check blind spots, and observe the road continuously", "b) Check messages on the phone", "c) Rubbernecking", "d) Accelerating"],
+            ["a) Trip planning", "b) Anticipation", "c) Preparing for a long drive", "d) Preventive maintenance"],
+            ["a) Stay calm and increase following distance", "b) Slam on the brakes", "c) Start honking at the car in front", "d) Switch on the hazard lights"],
+            // ... (and so on for the remaining questions)
+        ];
+
+        const correctAnswers = ["a", "a", "d", "a", "b", "b", "a", "c", "d", "a", "c", "a", "c", "b", "a", "c", "b", "b", "a", "c", "c", "b", "b", "c", "c", "d", "b", "a", "c", "a", "a"];
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+        });
+
+        function updateQuestion() {
+            questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+            // nextButton.style.display = "block"; // Show next button after updating the question
+        }
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }   
+    </script>
+</body>
+
+</html>

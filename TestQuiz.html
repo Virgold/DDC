@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Texas 6-Hour Defensive Driving Course</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://prospexlms.com/css/app.css">
+    <link rel="stylesheet" id="css-main" href="https://prospexlms.com/assets/css/oneui.min.css">
+</head>
+
+<body>
+    <style>
+        .course-content ul {
+            list-style: outside;
+        }
+
+        .course-content ol {
+            list-style: outside;
+            list-style-type: decimal;
+        }
+
+        .course-content img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon,
+        .carousel-indicators {
+            filter: invert(1);
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+    </style>
+    <div class="container course-content">
+        <div class="quiz-container">
+            <h1>Test Bank 2 v1</h1>
+            <div id="question-container" class="d-noe">
+                <p id="question-text">Question 1: What is the primary reason why driver’s license is a privilege?</p>
+                <form id="quiz-form">
+                    <label><input type="radio" name="q1" value="a"> a) To ensure that drivers are equipped with the
+                        knowledge and skills to drive safely</label><br>
+                    <label><input type="radio" name="q1" value="b"> b) To limit driving to commercial
+                        drivers</label><br>
+                    <label><input type="radio" name="q1" value="c"> c) To limit the number of vehicles on the
+                        road</label><br>
+                    <label><input type="radio" name="q1" value="d"> d) To promote public transportation</label><br>
+                </form>
+                <button type="button" id="next-button" class="btn btn-success my-3">Next</button>
+            </div>
+            <div id="result" style="display: none;"></div>
+        </div>
+        <div class="d-flex pb-4 mt-5">
+            <button class="btn btn-primary me-auto">
+                <a href="./mod15.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN TO QUIZ</a>
+            </button>
+            <button class="btn btn-primary align-items-center justify-items-center">
+                <a href="./Test3.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 2</a>
+            </button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script>
+        $(function ($) {
+            $(".flipcard").flip();
+        });
+
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+
+        const questions = [
+            "What is the primary reason why driver’s license is a privilege?",
+            "If a driver obeys traffic rules, what are some of the consequences?",
+            "What is defensive driving?",
+            "Who has the greatest number of fatalities in car accidents in the USA in 2022?",
+            "What are the major contributors to unsafe driving?",
+            "How often does a person die on the road in Texas due to collisions?",
+            "What learnings and lessons can you take away from driving education programs?",
+            "How does adherence to speed limits improve safety on the road?",
+            "Which among the following areas can you drive 70 miles per hour?",
+            "What are the benefits of adhering to traffic signs and signals?",
+            "What best describes right-of-way?",
+            "Which among the following temporarily block the use of lanes?",
+            "You are permitted to drive on the improved shoulder on the following instances, EXCEPT:",
+            "When is a Certificate of Financial Responsibility required from driver?",
+            "These are the seats appropriate for 4 to 7 and 8 to 12 year olds.",
+            "Which road marking indicate no passing in both directions?",
+            "Which white marking on the road prohibit lane changes?",
+            "Aside from your safety and safety of passengers, what are the other benefits of defensive driving?",
+            "What is the defensive driving technique which actively observes and assesses your surroundings?",
+            "What does it mean to assess risk factors on the road?",
+            "How should you drive in rural or unfamiliar roads?",
+            "What aspect of driving involves understanding and adhering to speed limits, adjusting your speed according to road conditions, and maintaining a safe and appropriate speed for the situation?",
+            "What do you call the maximum limits that your vehicle’s speed cannot exceed?",
+            "What do you do when turning right at an intersection?",
+            "What should you do when entering roundabouts?",
+            "What should you do if you need to perform off-road recovery?",
+            "What are the contents of a vehicle emergency kit?",
+            "What are the more useful vehicle functions during foggy conditions?",
+            "Where are the more wind-prone areas?",
+            "How to stay safe during lightning strikes?"
+        ];
+
+        const answers = [
+            ["a) To ensure that drivers are equipped with the knowledge and skills to drive safely", "b) To limit driving to commercial drivers", "c) To limit the number of vehicles on the road", "d) To promote public transportation"],
+            ["a) Better mental and physical health", "b) Increased stress", "c) Higher fatality", "d) Engine breakdown"],
+            ["a) Addresses post-collision procedures", "b) Knowledge how to address emergencies", "c) Help reduce travel time", "d) Proactive approach that focuses on anticipating and avoiding potential hazards"],
+            ["a) Motorcyclists", "b) Drivers", "c) Pedestrians", "d) Cyclists"],
+            ["a) Speeding, distracted driving, and drunk driving", "b) Conversation with other passengers", "c) Failing to notice traffic signs"],
+            ["a) One person every day", "b) One person in every 5 hours", "c) One person in every 1 hour and 57 minutes", "d) One person in every 8 hours"],
+            ["a) Proper driving techniques and following distances", "b) Best tint for your glass", "c) Best weather conditions to drive in", "d) How to prolong electric vehicle mileage"],
+            ["a) Limit the number of aggressive drivers on the road", "b) Improve self-management of drivers", "c) Gives driver better vehicular control and increased reaction time", "d) Help lessen hydroplaning"],
+            ["a) Highways and freeways", "b) Residential area", "c) Urban area", "d) Suburban area"],
+            ["a) Improves safety, orderly traffic, and predictability in the road environment", "b) It improves the situational awareness of drivers", "c) Limits aggressive driving", "d) Helps drivers improve their focus"],
+            ["a) A right that drivers can exercise on the road", "b) Option can drivers can use when traffic is heavy", "c) A way to determine who will go first in traffic", "d) A rule as to how fast can go during inclement weather"],
+            ["a) Construction zones", "b) Sidewalks", "c) Intersection", "d) Center island"],
+            ["a) To accelerate before entering the main traveled lane of traffic;", "b) To decelerate before making a right turn;", "c) To pass another vehicle that is slowing, stopped, disabled, or preparing to make a left turn on the main part of the roadway;", "d) To make quick passes and cut quickly back to your lane"],
+            ["a) Drivers who are caught speeding", "b) When drivers are involved in a car crash", "c) New drivers", "d) For drivers caught in a parking violation"],
+            ["a) Booster seats", "b) Built-in passenger seat", "c) Forward-facing seat", "d) Rear-facing seat"],
+            ["a) Single solid yellow line", "b) Broken yellow lines", "c) Double yellow lines", "d) Double broken yellow lines"],
+            ["a) Broken white line", "b) Solid white line", "c) Thick solid white line", "d) Zebra style lines"],
+            ["a) Shorten road repairs", "b) Financial savings and stress reduction", "c) Shorten travel time", "d) Improve road conditions"],
+            ["a) Situational awareness", "b) Emotional sensitivity", "c) Intuition", "d) Driver’s sixth sense"],
+            ["a) Observe the vehicle ahead only", "b) Focus on the vehicles on the opposing lane", "c) Evaluate the speed of other vehicles and consider road conditions", "d) Check the vehicles on front only"],
+            ["a) Aggressively drive through areas with wildlife", "b) Adjust your speed to the road conditions, taking into account curves, hills, and limited visibility.", "c) Accelerate faster than the speed limit", "d) Drive between two lanes"],
+            ["a) Speed management", "b) Defensive driving", "c) Scanning the road", "d) Situational awareness"],
+            ["a) Speed limits", "b) Engine limits", "c) Turn limits", "d) Lane changes"],
+            ["a) Avoid using turn signals", "b) Wait for all signals to turn green", "c) Yield the right-of-way to pedestrians who are lawfully crossing the road at designated crosswalks or intersections.", "d) Turn right quickly without checking your blind spots"],
+            ["a) Enter quickly after the first few vehicles", "b) Try to gain against cyclists", "c) Honk at vehicles in the roundabout so they will yield", "d) Yield to vehicles already in the roundabout before entering."],
+            ["a) Let your naturally slow down to 5 to 10 kilometers per hour. Do not slam the brakes. Grip the steering wheel firmly and do not make sudden turns.", "b) Slam the brakes immediately and make sudden turns", "c) Abruptly steer your vehicle back to the road", "d) Accelerate your vehicle even more and try to pass other vehicles through the unpaved road"],
+            ["a) Extra clothes, extra cellphone, and headlights", "b) Mirrors, brake fluid, and engine coolant", "c) Flashlight, extra batteries, first aid kit, blankets, non-perishable food, and water", "d) Cash on hand, map, and travel diary"],
+            ["a) High-beam headlights, rearview camera, and FM radio", "b) Vehicle plate, radio antenna, and sun visor", "c) Fog lights, low-beam headlights, and defroster", "d) Turn signals and hazard lights"],
+            ["a) Open plains, bridges, and coastal regions", "b) Urban cities and inner city streets", "c) Underground tunnels", "d) Highways near airports"],
+            ["a) Avoid open fields, tall objects, or isolated trees that can attract lightning.", "b) Try to leave your vehicle if it’s an emergency", "c) Park at an open lot", "d) Park beside a restaurant where there are other vehicles"],
+        ];
+
+        const correctAnswers = ["a", "a", "d", "a", "b", "b", "a", "c", "d", "a", "c", "a", "c", "b", "a", "c", "b", "b", "a", "c", "c", "b", "b", "c", "c", "d", "b", "a", "c", "a", "a"];
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+        });
+
+        function updateQuestion() {
+            questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+            // nextButton.style.display = "block"; // Show next button after updating the question
+        }
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }   
+    </script>
+</body>
+
+</html>

@@ -70,7 +70,7 @@
 
         <div class="quiz-container">
             <h1>Texas 6-Hour Driving Course Quiz</h1>
-            <div id="question-container">
+            <div id="question-container" class="d-noe">
                 <p id="question-text">Question 1: What is the purpose of the Texas 6-hour Driving Course?</p>
                 <form id="quiz-form">
                     <label><input type="radio" name="q1" value="a"> a) To obtain a learner's permit</label><br>
@@ -78,16 +78,21 @@
                     <label><input type="radio" name="q1" value="c"> c) To fulfill the requirement for a driver's
                         license</label><br>
                     <label><input type="radio" name="q1" value="d"> d) To improve parking skills</label><br>
-                    <button type="button" id="next-button" class="btn btn-info">Next</button>
                 </form>
+                <button type="button" id="next-button" class="btn btn-success my-3">Next</button>
             </div>
             <div id="result" style="display: none;"></div>
         </div>
         <div class="d-flex pb-4 mt-5">
-            <button class="btn btn-primary mx-auto">
-                <a href="./mod14.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN to Course</a>
+            <button class="btn btn-primary me-auto">
+                    <a href="./mod14.html" target="_blank" rel="noopener noreferrer"
+                            class="text-light">RETURN TO COURSE</a>
             </button>
-        </div>
+            <button class="btn btn-primary align-items-center justify-items-center">
+                    <a href="./TestQuiz.html" target="_blank" rel="noopener noreferrer"
+                            class="text-light">GO TO TEST</a>
+            </button>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -108,6 +113,7 @@
 
         let currentQuestion = 0;
         let userAnswers = [];
+
 
         const questions = [
             "What is the purpose of the Texas 6-hour Driving Course?",
@@ -139,19 +145,43 @@
             "Why is drug-impaired driving a serious concern on the road?",
             "What percent of alcohol-related traffic fatalities were underage?",
             "What is the last stage of intoxication with the worst possible outcome?",
-            "What are the consequences of DUI?",
-
-
-
-
+            "What are the consequences of DUI?"
         ];
 
         const answers = [
             ["a) To obtain a learner's permit", "b) To learn advanced driving techniques", "c) To fulfill the requirement for a driver's license", "d) To improve parking skills"],
             ["a) Checking tire pressure", "b) Adjusting the seat and mirrors", "c) Starting the engine", "d) Buckling the seat belt"],
-            ["a) Checking tire pressure", "b) Adjusting the seat and mirrors", "c) Starting the engine", "d) Buckling the seat belt"],
-            // Add the rest of the answers here
+            ["a) Slow down and proceed with caution", "b) Maintain the current speed and proceed", "c) Speed up and pass the stop sign quickly", "d) Ignore the stop sign if no other vehicles are around"],
+            ["a) Passing is allowed", "b) No passing is allowed", "c) Only motorcycles can pass", "d) Passing is allowed during daylight hours only"],
+            ["a) To avoid getting lost", "b) To have more room for passengers", "c) To allow time and space to react to potential hazards", "d) To save fuel by driving slower"],
+            ["a) Adjusting the climate control settings", "b) Checking the rearview mirror", "c) Using hands-free calling", "d) Talking to a passenger"],
+            ["a) Honk to alert them to your presence", "b) Speed up to pass them quickly", "c) Yield the right-of-way and allow them to cross", "d) Drive close to them to make them hurry"],
+            ["a) Overtake them quickly to pass", "b) Maintain a safe following distance", "c) Tailgate them closely", "d) Flash your headlights to signal them to move over"],
+            ["a) A fine and temporary suspension of the driver's license", "b) No consequences if it's your first offense", "c) Community service and counseling", "d) Legal immunity if you're above the legal drinking age"],
+            ["a) Improves coordination and reaction time", "b) Enhances judgment and decision-making skills", "c) Slows reaction time and impairs judgment", "d) Increases focus and concentration"],
+            ["a) Engage in a race to teach them a lesson", "b) Start honking your horn to show frustration", "c) React aggressively to assert dominance", "d) Avoid eye contact and maintain a safe distance"],
+            ["a) Engage in physical confrontations to defend yourself", "b) Use your horn excessively to express frustration", "c) Practice deep breathing and stay calm", "d) Speed up to overtake the aggressive driver"],
+            ["a) Turn on your high beams for better visibility", "b) Drive at the maximum speed limit to reach your destination quickly", "c) Increase your following distance and reduce your speed", "d) Ignore the rain and drive normally"],
+            ["a) Slam on the brakes to regain control", "b) Steer in the opposite direction of the skid", "c) Accelerate to gain traction", "d) Maintain a firm grip on the steering wheel and steer straight"],
+            ["a) It increases the resale value of the vehicle", "b) It helps maintain good fuel efficiency", "c) It prevents mechanical failures and breakdowns", "d) It reduces the need for insurance coverage"],
+            ["a) Only when you notice a visible flat tire", "b) Once a year during vehicle registration", "c) Monthly or before long trips", "d) Every few years during routine inspections"],
+            ["a) It reduces stopping distance", "b) It has no effect on stopping distance", "c) It increases stopping distance", "d) It eliminates the need for braking"],
+            ["a) Only the condition of the brakes", "b) The weight of the vehicle and the condition of the weather", "c) The speed of the vehicle and the condition of the brakes", "d) Only the weight of the vehicle"],
+            ["a) Ignoring traffic laws for personal convenience", "b) Driving aggressively to assert dominance on the road", "c) Respecting other road users and following traffic laws", "d) Engaging in distracted driving behaviors"],
+            ["a) Encouraging friends to engage in risky driving practices", "b) Setting a good example and sharing safe driving tips", "c) Engaging in aggressive driving to fit in with other drivers", "d) Disregarding the safety of other road users"],
+            ["a) Drive above the speed limit", "b) Close in on slower vehicles", "c) Stay on the right lane unless passing slower vehicles", "d) Use turn signals only when within 20 to 50 feet of your turn"],
+            ["a) Increase following distance and reduce speed", "b) Use high-beams during the entire travel", "c) Pass other vehicles often and frequently even in the darker portions of the road", "d) Stay on the center of a two-lane road to avoid possible wildlife on the shoulder"],
+            ["a) Use ordinary sunglasses to block off sun glare", "b) Maintain the regular 3 seconds following distance", "c) Drive only during cloud weather", "d) Avoid driving during sunrise or sunset and choose routes with more shade"],
+            ["a) The engine might not have enough power going up", "b) The force of gravity will pull the car away from the road", "c) Increased engine load stresses the engine while blind spots in curves ahead require slowing down", "d) It is difficult to make a pass when driving uphill"],
+            ["a) Let the vehicle roll and stay on neutral gear", "b) Accelerate slightly before the steep decline to give your car a little momentum", "c) Brake continuously to ensure your vehicle do not move too fast", "d) Drive on a lower gear and use intermittent braking"],
+            ["a) 11,500", "b) 10,142", "c) 13,005", "d) 8,923"],
+            ["a) Drugs were present in 43% of fatally injured drivers with known test results in 2019", "b) Drugs were present in 30% of fatally injured drivers with known test results in 2019", "c) Drugs were present in 20% of fatally injured drivers with known test results in 2019", "d) Drugs were present in 50% of fatally injured drivers with known test results in 2019"],
+            ["a) 16%", "b) 12%", "c) 20%", "d) 10%"],
+            ["a) Stupor which leads to coma", "b) Confusion and disorientation because it leads to poor decisions", "c) Alcohol poisoning which can lead to death", "d) Excitement and impairment only"],
+            ["a) Legal penalties, incurring a criminal record, risk of accident, emotional impact, civil lawsuit and higher insurance", "b) Faster reaction times on the road", "c) Ability to focus more and rely on your driving skills", "d) Fines and some jail time"]
         ];
+
+        const correctAnswers = ["c", "b", "a", "b", "c", "a", "c", "b", "a", "c", "d", "c", "c", "b", "d", "c", "c", "b", "c", "b", "c", "a", "a", "d", "d", "a", "a", "c", "a", "a", "a"];
 
         nextButton.addEventListener("click", () => {
             const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
@@ -169,6 +199,7 @@
         function updateQuestion() {
             questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
             quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+            // nextButton.style.display = "block"; // Show next button after updating the question
         }
 
         function calculateScore() {
@@ -196,7 +227,7 @@
             resultContainer.innerHTML = resultHTML;
             resultContainer.style.display = "block";
             questionContainer.style.display = "none";
-        }
+        }   
     </script>
 </body>
 
