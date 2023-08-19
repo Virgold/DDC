@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Texas 6-Hour Defensive Driving Course</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://prospexlms.com/css/app.css">
+    <link rel="stylesheet" id="css-main" href="https://prospexlms.com/assets/css/oneui.min.css">
+</head>
+
+<body>
+    <style>
+        .course-content ul {
+            list-style: outside;
+        }
+
+        .course-content ol {
+            list-style: outside;
+            list-style-type: decimal;
+        }
+
+        .course-content img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon,
+        .carousel-indicators {
+            filter: invert(1);
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+
+        .card-back {
+            color: white;
+            padding: 1em;
+            border-radius: 5px;
+        }
+    </style>
+    <div class="container course-content">
+        <div class="quiz-container">
+            <h1>Test Bank 4 v1</h1>
+            <div id="question-container" class="d-noe">
+                <p id="question-text">Question 1: What is the minimum age for a Texan to obtain a Learner’s Permit?p>
+                <form id="quiz-form">
+                    <label><input type="radio" name="q1" value="a"> a) 20 years old</label><br>
+                    <label><input type="radio" name="q1" value="b">b) 21 years old</label><br>
+                    <label><input type="radio" name="q1" value="c">c) 15 years old</label><br>
+                    <label><input type="radio" name="q1" value="d">d) 14 years old</label><br>
+                </form>
+                <button type="button" id="next-button" class="btn btn-success my-3">Next</button>
+            </div>
+            <div id="result" style="display: none;"></div>
+        </div>
+        <div class="d-flex pb-4 mt-5">
+            <button class="btn btn-primary d-flex mx-auto">
+                <a href="./Test3.html" target="_blank" rel="noopener noreferrer" class="text-light">BACK TO TEST 3</a>
+            </button>
+            <!-- <button class="btn btn-primary align-items-center justify-items-center">
+                <a href="./Test4.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 4</a>
+            </button> -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+    <script>
+        $(function ($) {
+            $(".flipcard").flip();
+        });
+
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+
+        const questions = [
+            "What is the minimum age for a Texan to obtain a Learner’s Permit?",
+            "Why is driver safety the most important aspect of driving?",
+            "How can you ensure that your passengers are safe?",
+            "What does vehicle safety check include?",
+            "What should you be on the lookout for when planning your route?",
+            "What are the emergency items for potential roadside emergencies?",
+
+
+            // Module 2
+            "How often does a person get injured in Texas due to collisions?",
+            "What is the second leading cause of fatality in vehicular collisions in Texas?",
+
+
+            // Module 3
+            "What is the primary advantage of implementing traffic laws?",
+            "How do traffic laws facilitate the efficient flow of traffic?",
+            "What are the consequences of speeding?",
+            "How can I ensure adherence to speed limits?",
+            "These vehicles have right-of-way, EXCEPT:",
+            "How can you effectively position your vehicle in your lane?",
+            "What are the laws which prohibit driving while intoxicated?",
+            "During traffic stops, it’s important to remain calm. What should you do when interacting with law enforcement?",
+            "What is the main task of drivers with regard to implementing SB 1831 Human Trafficking Prevention?",
+
+
+            // Module 4
+            "What are some of the penalties for DUI?",
+
+
+            // Module 5
+            "Why is driving a privilege that comes with great responsibility?",
+            "What is the space called between your vehicle and the vehicle in front of you?",
+            "When should you increase your following distance?",
+            "You should follow the following in heavy traffic, EXCEPT:",
+            "You should perform the following steps in lane merges and exits, EXCEPT:",
+            "What should you do when approaching and driving in school zones?",
+            "What should you do to perform proper lane usage?",
+            "How should you respond to aggressive and distracted drivers?",
+            "What information do you provide the police when reporting an aggressive driver?",
+
+
+            // Module 6
+            "What signs should you check to see if the wind is getting stronger?",
+
+
+            // Module 7
+            "What are the two major characteristics of urban city roads?",
+            "What are two of the strategies to deal with traffic congestion?",
+
+        ];
+
+        const answers = [
+            ["a) 20 years old", "b) 21 years old", "c) 15 years old", "d) 14 years old"],
+            ["a) To reduce traffic", "b) Limit the risk of getting a citation", "c) Get to the destination faster", "d) To preserve human life"],
+            ["a) Driving aggressively through the highway", "b) Ignoring the traffic signs", "c) Drive safely, use seatbelts, and make proper maneuvers", "d) Try to make passes quickly without checking mirrors"],
+            ["a) Traffic conditions", "b) Weather update", "c) Check FM radio", "d) Check tire depth, brakes, fluid levels, taillights, headlights, and turn signals"],
+            ["a) Travel time", "b) Nearby scenic and tourist spots", "c) Possible off-road alternatives", "d) Potential traffic challenges and weather updates"],
+            ["a) Helmet and night vision", "b) Match and emergency flare", "c) Fully charged phone, spare tire, jack, jumper cables, and flashlight", "d) Jacket and visor"],
+
+
+            // Module 2
+            ["a) One person in every 2 minutes and 12 seconds", "b) One person in every 5 minutes", "c) One person in every 8 minutes", "d) One person in every 30 minutes"],
+            ["a) Drunk driving", "b) Aggressive driving", "c) Distracted driving", "d) Failure to yield"],
+
+
+            // Module 3
+            ["a) More passengers will use public transportation", "b) Reduction of accidents and injuries", "c) More traffic enforcers will be deployed", "d) There will be less bad weather"],
+            ["a) Prevent people from turning right on red", "b) They define the right of way, signaling procedures, and merging and overtaking", "c) Paint crosswalk markings on the road", "d) Coordinate the switching of traffic lights"],
+            ["a) Reduced reaction time and reduced vehicle control", "b) The impact is lessened", "c) Pedestrians feel safer", "d) Braking power increases"],
+            ["a) Just drive as fast as the other motorists", "b) Be aware of surroundings, adjust to road conditions and weather, and observe posted speed limits", "c) Drive around 5 miles per hour faster than the average motorists", "d) Go on the shoulder lane and pass everybody else"],
+            ["a) Emergency vehicles with sirens on", "b) Pedestrians at crosswalks", "c) School bus with flashing red lights", "d) Large pick-up trucks"],
+            ["a) Use turn signals, use the lane appropriate for your speed and do not drift into adjacent lanes", "b) Stay in between two lanes", "c) Use the improved shoulder", "d) Always stay in the leftmost lane"],
+            ["a) Impaired driving laws", "b) Parking regulations", "c) School zone laws", "d) Construction zone laws"],
+            ["a) Make sudden movement", "b) Refuse to lower your window", "c) Communicate openly with the police officer. Before attempting to reach for documents or your license, notify the officer of where you will get them.", "d) Hide your hands behind your back"],
+            ["a) Ignore the signs", "b) Perform undercover work", "c) Launch own investigation", "d) Identify the red flags of victims, report to the police, and provide information to police authorities"],
+
+
+            // Module 4
+            ["a) Jail time only", "b) Criminal charges, fines, license suspension, Ignition Interlock Device, and imprisonment", "c) License suspension only", "d) Fines only"],
+
+
+            // Module 5
+            ["a) Driving is a task that is difficult to master", "b) Other drivers are rushing through traffic", "c) Your safety and other motorists’ safety depend on your driving", "d) Driving is a complex task"],
+            ["a) Social distance", "b) Following distance", "c) Physical distance", "d) Safe distance"],
+            ["a) When driving in highways", "b) During adverse weather", "c) During heavy traffic", "d) When driving in rural roads"],
+            ["a) Stay patient and maintain a calm demeanor in heavy traffic situations.", "b) Increase your following distance to allow for sudden stops or slowdowns.", "c) Avoid aggressive maneuvers, such as tailgating or frequent lane changes, which can contribute to accidents.", "d) Honk frequently, suddenly change lanes, and do not use turn signals"],
+            ["a) Follow lane markings and signs when merging or exiting a highway or roadway.", "b) Cut in quickly into the lane without checking your mirrors", "c) Use your turn signals in advance to indicate your intentions to other drivers.", "d) Yield to merging traffic and allow vehicles to merge smoothly"],
+            ["a) Avoid the traffic by overtaking all vehicles when possible", "b) If there are no children, you can increase your speed", "c) Observe reduced speed limits in school zones and residential areas especially during school hours when children are present.", "d) Maintain normal speed and ignore school zone signs"],
+            ["a) Avoid lane weaving, use turn signals, and stay in the right lane", "b) Pass other vehicles on a solid yellow line", "c) Block intersections when traffic is not moving", "d) Merge quickly and cut into other drivers’ lanes"],
+            ["a) Make eye contact and be firm in challenging their actions", "b) Close in on them and start tailgating", "c) Stay calm, avoid provocative actions, and avoid a challenge", "d) Reduce your following distance and start honking"],
+            ["a) License plate, details about the incident, and driver behavior", "b) How you felt during the entire incident", "c) What the other drivers were doing in response", "d) The state of the traffic around the area"],
+
+
+            // Module 6
+            ["a) The speed of the vehicles in other lanes", "b) Swaying and movement of trees and vegetation, as well as debris flying in midair", "c) The rushing sound of the wind", "d) Cloud formation and presence of nimbus clouds"],
+
+
+            // Module 7
+            ["a) Roundabouts and intersections", "b) Traffic signals and road markings", "c) Lane markings and one-way roads", "d) Traffic density and complex road network"],
+            ["a) Stay calm and waiting for traffic to pass by while on a gas station", "b) Patience and discipline in using lanes and merging", "c) Honking and occupying two lanes", "d) Rent a taxi and leave your vehicle in a pay parking"],
+
+        ];
+
+        const correctAnswers = [
+            "c",
+            "d",
+            "c",
+            "d",
+            "d",
+            "c",
+            // Module 2
+            "a",
+            "a",
+
+
+            // Module 3
+            "b",
+            "b",
+            "a",
+            "b",
+            "d",
+            "a",
+            "a",
+            "c",
+            "d",
+
+
+            // Module 4
+            "b",
+
+
+            // Module 5
+            "c",
+            "b",
+            "b",
+            "d",
+            "b",
+            "c",
+            "a",
+            "c",
+            "a",
+
+
+            // Module 6
+            "b",
+
+
+            // Module 7
+            "d",
+            "b",
+
+        ];
+
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+        });
+
+        function updateQuestion() {
+            questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+            // nextButton.style.display = "block"; // Show next button after updating the question
+        }
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }   
+    </script>
+</body>
+
+</html>

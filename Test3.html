@@ -52,15 +52,14 @@
         <div class="quiz-container">
             <h1>Test Bank 3 v1</h1>
             <div id="question-container" class="d-noe">
-                <p id="question-text">Question 1: What is the primary reason why driver’s license is a privilege?</p>
+                <p id="question-text">Question 1: What is the program that ensures Texans get the right experience with
+                    driving before getting a Full Driver’s License?</p>
                 <form id="quiz-form">
-                    <label><input type="radio" name="q1" value="a"> a) To ensure that drivers are equipped with the
-                        knowledge and skills to drive safely</label><br>
-                    <label><input type="radio" name="q1" value="b"> b) To limit driving to commercial
-                        drivers</label><br>
-                    <label><input type="radio" name="q1" value="c"> c) To limit the number of vehicles on the
-                        road</label><br>
-                    <label><input type="radio" name="q1" value="d"> d) To promote public transportation</label><br>
+                    <label><input type="radio" name="q1" value="a"> a) Driver education program</label><br>
+                    <label><input type="radio" name="q1" value="b">b) Graduated Driver License Program</label><br>
+                    <label><input type="radio" name="q1" value="c">c) Learner’s Permit Phase</label><br>
+                    <label><input type="radio" name="q1" value="d">d) Commercial Driver’s
+                        Program</label><br>
                 </form>
                 <button type="button" id="next-button" class="btn btn-success my-3">Next</button>
             </div>
@@ -71,7 +70,7 @@
                 <a href="./TestQuiz.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 2</a>
             </button>
             <button class="btn btn-primary align-items-center justify-items-center">
-                <a href="./Test3.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 3</a>
+                <a href="./Test4.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 4</a>
             </button>
         </div>
     </div>
@@ -103,36 +102,36 @@
 
 
         const questions = [
-            "What is the primary reason why driver’s license is a privilege?",
-            "If a driver obeys traffic rules, what are some of the consequences?",
-            "What is defensive driving?",
-            "Who has the greatest number of fatalities in car accidents in the USA in 2022?",
-            "What are the major contributors to unsafe driving?",
-            "How often does a person die on the road in Texas due to collisions?",
-            "What learnings and lessons can you take away from driving education programs?",
-            "How does adherence to speed limits improve safety on the road?",
-            "Which among the following areas can you drive 70 miles per hour?",
-            "What are the benefits of adhering to traffic signs and signals?",
-            "What best describes right-of-way?",
-            "Which among the following temporarily block the use of lanes?",
-            "You are permitted to drive on the improved shoulder on the following instances, EXCEPT:",
-            "When is a Certificate of Financial Responsibility required from driver?",
-            "These are the seats appropriate for 4 to 7 and 8 to 12 year olds.",
-            "Which road marking indicate no passing in both directions?",
-            "Which white marking on the road prohibit lane changes?",
-            "Aside from your safety and safety of passengers, what are the other benefits of defensive driving?",
-            "What is the defensive driving technique which actively observes and assesses your surroundings?",
-            "What does it mean to assess risk factors on the road?",
-            "How should you drive in rural or unfamiliar roads?",
-            "What aspect of driving involves understanding and adhering to speed limits, adjusting your speed according to road conditions, and maintaining a safe and appropriate speed for the situation?",
-            "What do you call the maximum limits that your vehicle’s speed cannot exceed?",
-            "What do you do when turning right at an intersection?",
-            "What should you do when entering roundabouts?",
-            "What should you do if you need to perform off-road recovery?",
-            "What are the contents of a vehicle emergency kit?",
-            "What are the more useful vehicle functions during foggy conditions?",
-            "Where are the more wind-prone areas?",
-            "How to stay safe during lightning strikes?"
+            "What is the program that ensures Texans get the right experience with driving before getting a Full Driver’s License?",
+            "Why is sharing the road with other road users important?",
+            "How do I promote positive driving culture?",
+            "Why is the driver’s handbook important?",
+            "Why is it dangerous to drive when fatigued and drowsy?",
+            "In the USA, how many were injured in 2019 due to bad weather?",
+            "All of these are contributing factors to collisions, EXCEPT:",
+            "Why are collisions costly for those involved?",
+            "In terms of traffic flow, how does adherence to speed limits help?",
+            "What is the purpose of traffic signs and signals?",
+            "All are types of traffic signs, EXCEPT:",
+            "How much litter was left behind on Texas roads in 2013?",
+            "What is the main danger of leaving children alone in the car?",
+            "What violation is incurred when you go above the posted speed limit?",
+            "What kind of driving disregards the safety of others on the road?",
+            "Situational awareness is important in all aspects of driving. What are the behaviors needed to have situational awareness?",
+            "What is the behavior that allows you to predict what may happen on the road?",
+            "If someone is tailgating you, what is the safe and defensive response?",
+            "What are the steps to identifying and responding to potential hazards?",
+            "What should you do when approaching work zones?",
+            "How should you respond to unpredictable drivers?",
+            "What is the part of the road where different roads cross?",
+            "What do you call an intersection without traffic signals, stop signs, or yield signs?",
+            "What are some important steps to follow when parking your vehicle in a parking lot?",
+            "How should you handle adverse weather conditions?",
+            "How should you respond to emergency vehicles with sirens on?",
+            "How should you respond to roadside emergencies?",
+            "How do you avoid hydroplaning?",
+            "How can you avoid intense snow and ice conditions on the road?",
+            "What should you do to stay safe during a heatwave?"
         ];
 
         const answers = [
@@ -154,10 +153,94 @@
             ["a) Use peripheral vision, look ahead, check blind spots, and observe the road continuously", "b) Check messages on the phone", "c) Rubbernecking", "d) Accelerating"],
             ["a) Trip planning", "b) Anticipation", "c) Preparing for a long drive", "d) Preventive maintenance"],
             ["a) Stay calm and increase following distance", "b) Slam on the brakes", "c) Start honking at the car in front", "d) Switch on the hazard lights"],
-            // ... (and so on for the remaining questions)
+            ["a) Wait for a traffic light to appear", "b) Scan the road ahead, check blind spots, and recognize hazardous situations", "c) Adjust to driving speed of other cars", "d) Wait for the navigation app to issue a warning"],
+            ["a) Observe reduced speed limits and follow instructions from flaggers or construction personnel.", "b) Ignore the signs from the flagger", "c) Follow where the traffic flow is moving", "d) Remain moving in the same speed"],
+
+            ["a) Anticipate sudden lane changes without signaling and expect abrupt stops",
+                "b) Keep up with their lane changes",
+                "c) Try to block their lanes if they are approaching from behind",
+                "d) Make a quick pass and cut in back quickly"],
+
+            ["a) Crosswalks",
+                "b) Highways",
+                "c) Intersections",
+                "d) Roundabout"],
+
+            ["a) Uncontrolled intersection",
+                "b) Controlled intersection",
+                "c) Roundabout",
+                "d) Exit ramp"],
+
+            ["a) Utilize the three-point turn, park between the lines, and practice controlled braking",
+                "b) Rely solely on your side mirrors",
+                "c) Back up quickly once you identify a vacant parking space",
+                "d) Do not check for pedestrians and other vehicles"],
+
+            ["a) Reduce speed, increase following distance, and stay informed of weather forecasts and the news",
+                "b) Make abrupt maneuvers when making turns",
+                "c) Maintain your foot on the gas when the vehicle hydroplanes",
+                "d) Drive quickly through standing water"],
+
+            ["a) Promptly move to the right side of the road, or come to a stop if necessary.",
+                "b) Wait for others to respond first, then slow down",
+                "c) See if you can follow the emergency vehicle so you can quickly navigate through traffic",
+                "d) Accelerate and try to clear the traffic ahead of the emergency vehicle"],
+
+            ["a) Look for the nearest gas station before stopping your vehicle",
+                "b) Swerve quickly to the side without checking your blind spots",
+                "c) Honk at everyone on the road and make quick turns",
+                "d) Safely park off the road or in a designated parking area if you experience a flat tire, engine trouble, or any other emergency."],
+
+            ["a) Steer clear of standing water, avoid sudden maneuvers, and steer cautiously",
+                "b) Drive quickly through standing water without stopping",
+                "c) Reduce speed then accelerate when the water level is lower",
+                "d) Follow another vehicle so you can move with little resistance"],
+
+            [
+                "a) Risk going through the less traveled routes",
+                "b) Go through the main routes which are more likely to be salted and and plowed",
+                "c) Drive without getting news updates",
+                "d) Rely on instinct as you make decisions when snowing"],
+
+            ["a) Overload the airconditioning system",
+                "b) Rest in shaded areas, wear sunscreen, drink plenty of water, and avoid peak hours",
+                "c) Drive during noon time and early afternoon",
+                "d) Drive through the hotter areas of the city"]
         ];
 
-        const correctAnswers = ["a", "a", "d", "a", "b", "b", "a", "c", "d", "a", "c", "a", "c", "b", "a", "c", "b", "b", "a", "c", "c", "b", "b", "c", "c", "d", "b", "a", "c", "a", "a"];
+        const correctAnswers = [
+            "b",
+            "a",
+            "b",
+            "a",
+            "a",
+            "c",
+            "d",
+            "c",
+            "a",
+            "a",
+            "d",
+            "a",
+            "a",
+            "c",
+            "a",
+            "a",
+            "b",
+            "a",
+            "b",
+            "a",
+            "a",
+            "c",
+            "a",
+            "a",
+            "a",
+            "a",
+            "d",
+            "a",
+            "b",
+            "b",
+        ];
+
 
         nextButton.addEventListener("click", () => {
             const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
