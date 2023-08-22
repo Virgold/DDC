@@ -481,7 +481,7 @@
         <br>
         <div id="carousel" class="carousel slide" data-interval="false">
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item">
                     <div class="text-center"><img src="./Images/Module 4/Interactive Elements/1.png" width="720" alt=""
                             class="img-fluid rounded center">
                     </div>
@@ -587,15 +587,72 @@
                     </div>
                 </div> -->
             </div>
-            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <!-- <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next enforced-click" href="#carousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a>
+            </a> -->
         </div>
+
+
+
+        <div class="">
+            <div class="d-md-block">
+                <h3 class="text-center text-primary underline" id="scenario-title"><strong> Failure to Wear
+                        Seatbelt</strong></h3>
+            </div>
+            <div class="text-center">
+
+                <img src="./Images/Module 4/Interactive Elements/2.png" width="720" alt=""
+                    class="img-fluid rounded center" id="scenario-img">
+            </div>
+            <br>
+
+            <div class="d-md-block">
+                <div id="question-container">
+                    <p id="question-text"><strong>You're about to start a short drive to the grocery store, and you're
+                            the driver. What should you do before pulling out of your driveway?</strong></p>
+
+                    <form id="quiz-form">
+                        <label><input type="radio" name="q1" value="a"> Ensure all passengers are properly buckled up
+                            before driving.
+                        </label>
+                        <br>
+                        <label><input type="radio" name="q1" value="b"> Start driving and remind the passengers to
+                            buckle up during the trip.</label><br>
+                    </form>
+
+                    <p class="text-success d-none" id="correct-ans">
+                        <i>
+                            <b>Correct Response: </b>Excellent! Ensuring all passengers are properly buckled up before
+                            driving is the correct response. It's your responsibility as the driver to prioritize the
+                            safety of everyone in the vehicle and ensure that their seatbelts are properly fastened.
+
+                        </i>
+                    </p>
+                    <p class="text-danger d-none" id="wrong-ans">
+                        <i>
+                            <b>Wrong Response: </b> Not quite. Starting the drive without ensuring all passengers are
+                            properly buckled up is not the safest choice. As the driver, it's essential to make sure
+                            everyone in the vehicle is wearing their seatbelts before you start driving.
+                        </i>
+                    </p>
+                    <div class="d-flex">
+                        <button type="button" id="next-button" class="btn shadow my-3 mx-auto"
+                            style="background-color: #A4A9AC;">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="result" style="display: none;"></div>
+            </div>
+
+        </div>
+        
         <br>
         <hr>
         <h2>
@@ -632,6 +689,173 @@
         $(function ($) {
             $(".flipcard").flip();
         });
+
+
+
+        const correctAns = document.getElementById("correct-ans");
+        const wrongAns = document.getElementById("wrong-ans");
+        const scenarioTitle = document.getElementById("scenario-title");
+        const scenarioImg = document.getElementById("scenario-img");
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        const title = [
+            "Failure to Wear Seatbelt",
+            "Reckless Driving",
+            "Failure to Yield",
+            "Distracted Driving"
+        ]
+        const image = [
+            "./Images/Module 4/Interactive Elements/2.png",
+            "./Images/Module 4/Interactive Elements/3.png",
+            "./Images/Module 4/Interactive Elements/4.png",
+            "./Images/Module 4/Interactive Elements/5.png"
+        ]
+        const questions = [
+            "You're about to start a short drive to the grocery store, and you're the driver. What should you do before pulling out of your driveway?",
+
+            "You're driving on a busy street, and you notice a driver weaving in and out of traffic, exceeding the speed limit, and tailgating other vehicles. What should you do? ",
+
+            " You approach an intersection with a yield sign, and another vehicle is approaching from your right. What should you do?",
+
+            " You receive a text message while driving. What should you do?",
+        ];
+
+        const answers = [
+            [" Ensure all passengers are properly buckled up before driving.", " Start driving and remind the passengers to buckle up during the trip."],
+
+            [" Maintain a safe distance and avoid engaging with the reckless driver.", " Attempt to confront the reckless driver and prevent their dangerous behavior."],
+
+            [" Maintain your speed and proceed through the intersection.", " Slow down or stop to allow the approaching vehicle to proceed first."],
+
+            [" Respond to the text message quickly while keeping your eyes on the road.", " Safely pull over to the side of the road before responding to the text message."],
+        ];
+
+        const correctAnswers = ["b", "b", "b", "a"];
+
+        const correctResponse = [
+            "Excellent! Ensuring all passengers are properly buckled up before driving is the correct response. It's your responsibility as the driver to prioritize the safety of everyone in the vehicle and ensure that their seatbelts are properly fastened.",
+            "Well done! Maintaining a safe distance and avoiding engagement with the reckless driver is the correct response. Confronting the driver may escalate the situation further, so it's essential to prioritize your safety and report the incident to the authorities, if necessary.",
+            "Well done! Slowing down or stopping to allow the approaching vehicle to proceed first is the correct response. Yield signs indicate that you must give the right-of-way to other vehicles, pedestrians, or cyclists as specified by the traffic control device or law.",
+            "Well done! Safely pulling over to the side of the road before responding to the text message is the correct response. Engaging in activities that take your attention away from driving can lead to accidents, so it's important to prioritize the safety of yourself and others by finding a safe location before using your phone."
+        ]
+
+
+        const wrongResponse = [
+            "Not quite. Starting the drive without ensuring all passengers are properly buckled up is not the safest choice. As the driver, it's essential to make sure everyone in the vehicle is wearing their seatbelts before you start driving.",
+            "That's not the safest choice. Attempting to confront a reckless driver can put you and others at risk. It's crucial to maintain a safe distance and avoid engaging with such drivers to ensure your safety on the road.",
+            "That's not the safest choice. Failure to yield at a yield sign can lead to accidents and endanger other road users. It's important to slow down or stop and give the right-of-way to the appropriate vehicle before proceeding.",
+            "That's not the safest choice. Responding to a text message while driving diverts your attention away from the road and can result in accidents. It's crucial to prioritize the safety of yourself and others by refraining from using your phone until you find a safe location to pull over."
+        ]
+
+
+
+
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            console.log(selectedOption);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+            console.log("from nextButton", selectedOption);
+        });
+
+
+        // Add event listeners to radio inputs
+        function addEventListenersToRadioInputs() {
+            console.log("event listner called");
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+
+            radioInputs.forEach((radioInput) => {
+                radioInput.addEventListener("change", () => {
+                    const selectedOption = radioInput.value;
+                    const questionNumber = parseInt(radioInput.name.slice(1)); // Extract question number from input name
+                    console.log(selectedOption, questionNumber);
+                    console.log(currentQuestion);
+                    performActionBasedOnSelection(selectedOption, questionNumber);
+                });
+            });
+        }
+
+        // Call this function to add event listeners to all radio inputs
+        addEventListenersToRadioInputs();
+
+
+        function performActionBasedOnSelection(selectedOption, questionNumber) {
+            questionNumber = currentQuestion;
+            if (selectedOption === correctAnswers[questionNumber]) {
+                // Perform an action for the correct answer
+                correctAns.classList.remove('d-none')
+                console.log(`Question ${questionNumber + 1}: Correct!`);
+            } else {
+                // Perform an action for the wrong answer
+                wrongAns.classList.remove('d-none')
+                console.log(`Question ${questionNumber + 1}: Wrong!`);
+            }
+        }
+
+
+
+
+
+        function updateQuestion() {
+            scenarioTitle.textContent = `${title[currentQuestion]}`
+            scenarioImg.src = `${image[currentQuestion]}`
+            correctAns.textContent = `Correct Response : ${correctResponse[currentQuestion]}`
+            correctAns.classList.add('d-none')
+            wrongAns.textContent = `Wrong Response: ${wrongResponse[currentQuestion]}`
+            wrongAns.classList.add('d-none')
+            questionText.textContent = `
+             ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer =>
+                `
+            <label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label>
+            <br>`).join("");
+            addEventListenersToRadioInputs();
+        }
+
+
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }   
     </script>
 </body>
 

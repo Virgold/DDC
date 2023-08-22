@@ -1841,9 +1841,10 @@
                 <strong> <i>Let's begin!</i></strong>
             </p>
             <br>
+
             <div id="carousel" class="carousel slide" data-interval="false">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item ">
                         <div class="d-md-block">
                             <h3 class="text-center text-primary underline"><strong>City Traffic Challenges
                                 </strong>
@@ -1967,15 +1968,72 @@
                         </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <!-- <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next enforced-click" href="#carousel" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                </a>
+                </a> -->
             </div>
+
+            <div class="">
+                <div class="d-md-block">
+                    <h3 class="text-center text-primary underline" id="scenario-title"><strong> Space Management
+                        </strong></h3>
+                </div>
+                <div class="text-center">
+
+                    <img src="./Images/Module 4/Interactive Elements/2.png" width="720" alt=""
+                        class="img-fluid rounded center" id="scenario-img">
+                </div>
+                <br>
+
+                <div class="d-md-block">
+                    <div id="question-container">
+                        <p id="question-text"><strong>As you drive, you notice a tight gap between your car and the
+                                vehicle ahead. How should you manage this space to ensure safety? Select the appropriate
+                                action from the following options.</strong></p>
+
+                        <form id="quiz-form">
+                            <label><input type="radio" name="q1" value="a"> Reduce your speed and increase the following
+                                distance.
+                            </label>
+                            <br>
+                            <label><input type="radio" name="q1" value="b"> Speed up to close the gap
+                                quickly.</label><br>
+                        </form>
+
+                        <p class="text-success d-none" id="correct-ans">
+                            <i>
+                                <b>Correct Response: </b> Excellent! By reducing your speed and increasing the following
+                                distance, you provide a safe cushion of space between your car and the vehicle ahead.
+                                This allows for better reaction time and reduces the risk of a collision.
+
+                            </i>
+                        </p>
+                        <p class="text-danger d-none" id="wrong-ans">
+                            <i>
+                                <b>Wrong Response: </b> Not quite. Speeding up to close the gap quickly can be dangerous
+                                and increase the risk of a rear-end collision. Remember, it's important to maintain a
+                                safe following distance by reducing your speed.
+
+                            </i>
+                        </p>
+                        <div class="d-flex">
+                            <button type="button" id="next-button" class="btn shadow my-3 mx-auto"
+                                style="background-color: #A4A9AC;">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="result" style="display: none;"></div>
+                </div>
+
+            </div>
+            
             <br>
             <hr>
             <h2>
@@ -2010,6 +2068,181 @@
         $(function ($) {
             $(".flipcard").flip();
         });
+
+
+
+        const correctAns = document.getElementById("correct-ans");
+        const wrongAns = document.getElementById("wrong-ans");
+        const scenarioTitle = document.getElementById("scenario-title");
+        const scenarioImg = document.getElementById("scenario-img");
+        const questionContainer = document.getElementById("question-container");
+        const questionText = document.getElementById("question-text");
+        const quizForm = document.getElementById("quiz-form");
+        const nextButton = document.getElementById("next-button");
+        const resultContainer = document.getElementById("result");
+
+        let currentQuestion = 0;
+        let userAnswers = [];
+
+        const title = [
+            "Space Management",
+            "Visual Awareness",
+            "Predicting and Reacting to Other Drivers",
+            "Managing Road Hazards",
+            "Space Driving Techniques"
+        ]
+        const image = [
+            "./Images/Module 5/Interactive Elements/2.png",
+            "./Images/Module 5/Interactive Elements/3.png",
+            "./Images/Module 5/Interactive Elements/4.png",
+            "./Images/Module 5/Interactive Elements/5.png",
+            "./Images/Module 5/Interactive Elements/6.png"
+        ]
+        const questions = [
+            "As you drive, you notice a tight gap between your car and the vehicle ahead. How should you manage this space to ensure safety? Select the appropriate action from the following options.",
+
+            "While scanning the road, you spot a pedestrian who seems distracted, looking down at his / her phone. How should you adjust your driving to accommodate this potential hazard? Choose the best response from the given options.",
+
+            "Approaching an intersection, you notice a driver in the adjacent lane who appears to be impatient and is speeding. What steps can you take to anticipate their actions and react defensively? Identify the most appropriate action from the following choices.",
+
+            "While driving, you encounter a construction zone with uneven pavement and temporary signage. How can you safely drive and navigate through this hazardous area? Choose the correct approach from the options provided.",
+
+            "You are driving on a multi-lane highway when another driver abruptly merges into your lane without signaling. How can you adjust your position and utilize space cushion driving techniques to prevent a collision? Select the best response from the given options."
+        ];
+
+        const answers = [
+            [" Reduce your speed and increase the following distance.", " Speed up to close the gap quickly."],
+
+            [" Honk your horn to alert the pedestrian.", " Slow down and be prepared for the pedestrian to make an unexpected move."],
+
+            [" Speed up to stay ahead of the driver.", " Maintain your speed and increase the following distance from the driver."],
+
+            [" Maintain your speed and follow closely behind the vehicle ahead.", " Reduce your speed and increase your following distance."],
+
+            [" Brake suddenly to create space.", " Slow down or change lanes to create a safe cushion of space."]
+        ];
+
+        const correctAnswers = ["b", "b", "b", "a"];
+
+        const correctResponse = [
+            "Excellent! By reducing your speed and increasing the following distance, you provide a safe cushion of space between your car and the vehicle ahead. This allows for better reaction time and reduces the risk of a collision.",
+            "Well done! Slowing down and being prepared for the pedestrian to make an unexpected move is the correct action. By maintaining caution, you give yourself more time to react if the pedestrian suddenly enters the road.",
+            "Great job! Maintaining your speed and increasing the following distance from the speeding driver is the correct action. This gives you more time to react to their aggressive maneuvers and helps maintain a safe distance.",
+            "Excellent! Reducing your speed and increasing your following distance is the right approach. This allows you to have better control over your vehicle on uneven pavement and gives you more time to react to any sudden changes in the construction zone.",
+            "Well done! Slowing down or changing lanes to create a safe cushion of space is the correct response. This gives you enough room to avoid a potential collision and ensures your safety on the highway."
+        ]
+
+
+        const wrongResponse = [
+            "Not quite. Speeding up to close the gap quickly can be dangerous and increase the risk of a rear-end collision. Remember, it's important to maintain a safe following distance by reducing your speed.",
+            "Not quite. Honking your horn may startle the pedestrian, potentially causing them to make a sudden move. It's better to slow down and be prepared for any unexpected actions the pedestrian may take.",
+            "That's not the best choice. Speeding up to stay ahead of the aggressive driver can escalate the situation and increase the risk of an accident. It's safer to maintain your speed and create more distance between your vehicles.",
+            "That's not the best choice. Maintaining your speed and following closely behind the vehicle ahead can be risky in a construction zone. It's important to reduce your speed and increase your following distance to ensure safety.",
+            "Not quite. Braking suddenly to create space may cause a rear-end collision. It's better to slow down or change lanes to create a safe cushion of space and avoid a potential accident."
+        ]
+
+
+
+
+
+        nextButton.addEventListener("click", () => {
+            const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+            console.log(selectedOption);
+            if (selectedOption) {
+                userAnswers.push(selectedOption.value);
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    updateQuestion();
+                } else {
+                    calculateScore();
+                }
+            }
+            console.log("from nextButton", selectedOption);
+        });
+
+
+        // Add event listeners to radio inputs
+        function addEventListenersToRadioInputs() {
+            console.log("event listner called");
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+
+            radioInputs.forEach((radioInput) => {
+                radioInput.addEventListener("change", () => {
+                    const selectedOption = radioInput.value;
+                    const questionNumber = parseInt(radioInput.name.slice(1)); // Extract question number from input name
+                    console.log(selectedOption, questionNumber);
+                    console.log(currentQuestion);
+                    performActionBasedOnSelection(selectedOption, questionNumber);
+                });
+            });
+        }
+
+        // Call this function to add event listeners to all radio inputs
+        addEventListenersToRadioInputs();
+
+
+        function performActionBasedOnSelection(selectedOption, questionNumber) {
+            questionNumber = currentQuestion;
+            if (selectedOption === correctAnswers[questionNumber]) {
+                // Perform an action for the correct answer
+                correctAns.classList.remove('d-none')
+                console.log(`Question ${questionNumber + 1}: Correct!`);
+            } else {
+                // Perform an action for the wrong answer
+                wrongAns.classList.remove('d-none')
+                console.log(`Question ${questionNumber + 1}: Wrong!`);
+            }
+        }
+
+
+
+
+
+        function updateQuestion() {
+            scenarioTitle.textContent = `${title[currentQuestion]}`
+            scenarioImg.src = `${image[currentQuestion]}`
+            correctAns.textContent = `Correct Response : ${correctResponse[currentQuestion]}`
+            correctAns.classList.add('d-none')
+            wrongAns.textContent = `Wrong Response: ${wrongResponse[currentQuestion]}`
+            wrongAns.classList.add('d-none')
+            questionText.textContent = `
+             ${questions[currentQuestion]}`;
+            quizForm.innerHTML = answers[currentQuestion].map(answer =>
+                `
+            <label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label>
+            <br>`).join("");
+            addEventListenersToRadioInputs();
+        }
+
+
+
+        function calculateScore() {
+            let score = 0;
+            for (let i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            displayResult(score);
+        }
+
+        function displayResult(score) {
+            const resultHTML = `
+                <h2>Your Quiz Result:</h2>
+                <p>You scored ${score} out of ${questions.length}.</p>
+                <h3>Here are your answers:</h3>
+                <ul>
+                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
+                </ul>
+                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+            `;
+
+            resultContainer.innerHTML = resultHTML;
+            resultContainer.style.display = "block";
+            questionContainer.style.display = "none";
+        }   
     </script>
 </body>
 
