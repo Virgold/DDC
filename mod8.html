@@ -1357,65 +1357,99 @@
                                 life.
                         </span></p>
 
-                <!-- Begin Carousel  This is not the scenario for module 8-->
-                <div id="carousel" class="carousel slide" data-interval="false">
-                        <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/1.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
-
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/2.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
 
 
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/3.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
+                <h2>
+                        Scenario: Effects of Alcohol and Drugs on Driving
+                </h2>
+                <p>
+                        <strong>
+                                Let’s check out some scenarios on the "Effects of Alcohol and Drugs on Driving." You’lll
+                                explore the dangers of impaired driving, specifically the effects of alcohol and drugs.
 
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/4.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/5.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/6.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/7.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
-                                <div class="carousel-item">
-                                        <div class="text-center"><img src="./Images/Module 9/Interactive elements/8.png"
-                                                        width="720" alt="" class="img-fluid rounded center">
-                                        </div>
-                                </div>
+                        </strong>
+                </p>
+                <br>
+                <div id="first-carousel">
+                        <p class="c1"><span class="c0"><I>Let&#39;s begin!</I></span></p>
+                        <p class="c1 c3"><span class="c0"></span></p>
+                        <div class="text-center"><img src="./Images/Module 8/Interactive elements/1.png" width="720"
+                                        alt="" class="img-fluid rounded center">
                         </div>
-                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next enforced-click" href="#carousel" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                        </a>
+                        <div class="d-flex">
+                                <button type="button" id="first-button" class="btn shadow my-3 mx-auto"
+                                        style="background-color: #A4A9AC;">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                        </div>
                 </div>
-                <!-- End Carousel -->
+
+                <div id="next-carousel" class="d-none">
+                        <div class="d-md-block">
+                                <h3 class="text-center text-primary underline" id="scenario-title"><strong> The Dangers
+                                                of Impaired Driving
+                                        </strong></h3>
+                        </div>
+                        <div class="text-center">
+
+                                <img src="./Images/Module 8/Interactive elements/2.png" width="720" alt=""
+                                        class="img-fluid rounded center" id="scenario-img">
+                        </div>
+                        <br>
+
+                        <div class="d-md-block">
+                                <div id="question-container">
+                                        <p id="question-text"><strong>Imagine you're at a social gathering where alcohol
+                                                        is being served. You have had a few drinks over the course of
+                                                        the evening. Now, you need to decide whether it's safe for you
+                                                        to drive home. What should you consider before making this
+                                                        decision? </strong></p>
+
+                                        <form id="quiz-form">
+                                                <label><input type="radio" name="q1" value="a"> Assess your own judgment
+                                                        and determine if you feel capable of driving.
+                                                </label>
+                                                <br>
+                                                <label><input type="radio" name="q1" value="b"> Recognize that any
+                                                        amount of alcohol consumption impairs driving
+                                                        abilities.</label><br>
+                                        </form>
+
+                                        <p class="text-success d-none" id="correct-ans">
+                                                <i>
+                                                        <b>Correct Response: </b> Well done! Recognizing that any amount
+                                                        of alcohol consumption impairs driving abilities is the correct
+                                                        response. Even small amounts of alcohol can affect your
+                                                        judgment, coordination, and reaction time, making it unsafe to
+                                                        drive.
+
+                                                </i>
+                                        </p>
+                                        <p class="text-danger d-none" id="wrong-ans">
+                                                <i>
+                                                        <b>Wrong Response: </b> Not quite. It's essential to understand
+                                                        that any amount of alcohol consumption impairs driving
+                                                        abilities. Even if you feel capable, the effects of alcohol on
+                                                        your judgment, coordination, and reaction time can make your
+                                                        driving unsafe.
+
+
+                                                </i>
+                                        </p>
+                                        <div class="d-flex">
+                                                <button type="button" id="next-button" class="btn shadow my-3 mx-auto"
+                                                        style="background-color: #A4A9AC;">
+                                                        <span class="carousel-control-next-icon"
+                                                                aria-hidden="true"></span>
+                                                </button>
+                                        </div>
+                                </div>
+
+                        </div>
+
+                </div>
+                <div id="result" style="display: none;"></div>
+
                 <hr>
 
                 <h2 class="c22" id="h.2hio093"><span class="c10 c4">Conclusion</span></h2>
@@ -1450,10 +1484,215 @@
                 integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
                 crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/gh/nnattawat/flip@master/dist/jquery.flip.js"></script>
+
         <script>
                 $(function ($) {
                         $(".flipcard").flip();
                 });
+
+
+                const firstCarousel = document.getElementById("first-carousel");
+                const nextCarousel = document.getElementById("next-carousel");
+                const firstButton = document.getElementById("first-button")
+                const correctAns = document.getElementById("correct-ans");
+                const wrongAns = document.getElementById("wrong-ans");
+                const scenarioTitle = document.getElementById("scenario-title");
+                const scenarioImg = document.getElementById("scenario-img");
+                const questionContainer = document.getElementById("question-container");
+                const questionText = document.getElementById("question-text");
+                const quizForm = document.getElementById("quiz-form");
+                const nextButton = document.getElementById("next-button");
+                const resultContainer = document.getElementById("result");
+
+
+
+
+                firstButton.addEventListener("click", () => {
+                        console.log("clicked first button");
+                        firstCarousel.classList.add("d-none");
+                        nextCarousel.classList.remove('d-none');
+                })
+
+                let currentQuestion = 0;
+                let userAnswers = [];
+
+                const title = [
+                        "The Dangers of Impaired Driving",
+                        "Alcohol and Driving",
+                        "Blood Alcohol Concentration (BAC)",
+                        "Drugs and Driving",
+                        "Prescription and Over-the-Counter Drugs"
+                ]
+                const image = [
+                        "./Images/Module 8/Interactive elements/2.png",
+                        "./Images/Module 8/Interactive elements/3.png",
+                        "./Images/Module 8/Interactive elements/4.png",
+                        "./Images/Module 8/Interactive elements/5.png",
+                        "./Images/Module 8/Interactive elements/6.png"
+                ]
+                const questions = [
+                        "Imagine you're at a social gathering where alcohol is being served. You have had a few drinks over the course of the evening. Now, you need to decide whether it's safe for you to drive home. What should you consider before making this decision?",
+
+                        "You've consumed some alcohol, but you're unsure about its effect on your ability to drive. How can you determine if your blood alcohol concentration (BAC) is within legal limits?  ",
+
+                        "You've taken a breathalyzer test, and your BAC is 0.08%. What does this mean in terms of legal limits and the ability to drive?",
+
+                        "Your doctor prescribed to you a new medication, and the label indicates that it may cause drowsiness. What should you do before getting behind the wheel?",
+
+                        "You have a mild cold, so you take an over-the-counter medication to relieve your symptoms. The medication warns of dizziness and fatigue as a potential side effect. What should you do before driving?"
+                ];
+
+                const answers = [
+                        [" Assess your own judgment and determine if you feel capable of driving.", " Recognize that any amount of alcohol consumption impairs driving abilities."],
+
+                        [" Use a breathalyzer or blood test to measure your BAC.", " Rely on how you feel to determine if you're capable of driving."],
+
+                        [" Your BAC is below the legal limit, and you can drive safely.", " Your BAC exceeds the legal limit, and it is unsafe to drive."],
+
+                        [" Take the medication and drive carefully.", " Read the medication's warning label and avoid driving if drowsiness is a potential side effect."],
+
+                        [" Assume the medication won't affect you and proceed with driving.", " Wait and observe how the medication affects you before deciding to drive."]
+                ];
+
+                const correctAnswers = ["b", "a", "b", "b", "a"];
+
+                const correctResponse = [
+                        "Well done! Recognizing that any amount of alcohol consumption impairs driving abilities is the correct response. Even small amounts of alcohol can affect your judgment, coordination, and reaction time, making it unsafe to drive.",
+
+                        "Excellent! Using a breathalyzer or blood test to measure your BAC is the correct approach. These devices provide an objective measure of your alcohol impairment and help you make informed decisions about driving.",
+
+                        "Well done! A BAC of 0.08% exceeds the legal limit in many jurisdictions, indicating that it is unsafe to drive. Driving with a BAC above the legal limit not only endangers your life but also puts others at risk.",
+
+                        "Well done! Reading the medication's warning label and avoiding driving if drowsiness is a potential side effect is the correct approach. It's crucial to understand the effects of medication and prioritize road safety.",
+
+                        "Excellent! Waiting and observing how the medication affects you before deciding to drive is the right approach. It's important to understand and observe the potential side effects of medications, especially when it comes to driving."
+                ]
+
+
+                const wrongResponse = [
+                        "Not quite. It's essential to understand that any amount of alcohol consumption impairs driving abilities. Even if you feel capable, the effects of alcohol on your judgment, coordination, and reaction time can make your driving unsafe.",
+                        "That's not the safest choice. Relying on how you feel to determine your capability to drive can be misleading. It's better to use a breathalyzer or blood test to accurately measure your BAC and make responsible decisions.",
+                        "Not quite. A BAC of 0.08% typically exceeds the legal limit in many jurisdictions. It is essential to understand that driving with a BAC above the legal limit is unsafe and can have severe consequences.",
+                        "That's not the safest choice. It's important to read the warning label on medications and avoid driving if drowsiness is listed as a potential side effect. This helps ensure your safety and the safety of others on the road.",
+                        "That's not the safest choice. Assuming the medication won't affect you and proceeding with driving can be risky. It's crucial to wait and observe how the medication affects you before making a decision to drive."
+                ]
+
+
+
+
+
+                nextButton.addEventListener("click", () => {
+                        const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
+                        console.log(selectedOption);
+                        if (selectedOption) {
+                                userAnswers.push(selectedOption.value);
+                                currentQuestion++;
+                                if (currentQuestion < questions.length) {
+                                        updateQuestion();
+                                } else {
+                                        calculateScore();
+                                }
+                        }
+                        console.log("from nextButton", selectedOption);
+                });
+
+
+                // Add event listeners to radio inputs
+                function addEventListenersToRadioInputs() {
+                        console.log("event listner called");
+                        const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+
+                        radioInputs.forEach((radioInput) => {
+                                radioInput.addEventListener("change", () => {
+                                        const selectedOption = radioInput.value;
+                                        const questionNumber = parseInt(radioInput.name.slice(1)); // Extract question number from input name
+                                        console.log(selectedOption, questionNumber);
+                                        console.log(currentQuestion);
+                                        performActionBasedOnSelection(selectedOption, questionNumber);
+                                });
+                        });
+                }
+
+                // Call this function to add event listeners to all radio inputs
+                addEventListenersToRadioInputs();
+
+
+                function performActionBasedOnSelection(selectedOption, questionNumber) {
+                        questionNumber = currentQuestion;
+                        if (selectedOption === correctAnswers[questionNumber]) {
+                                // Perform an action for the correct answer
+                                correctAns.classList.remove('d-none')
+                                console.log(`Question ${questionNumber + 1}: Correct!`);
+                        } else {
+                                // Perform an action for the wrong answer
+                                wrongAns.classList.remove('d-none')
+                                console.log(`Question ${questionNumber + 1}: Wrong!`);
+                        }
+                }
+
+
+
+
+
+                function updateQuestion() {
+                        scenarioTitle.textContent = `${title[currentQuestion]}`
+                        scenarioImg.src = `${image[currentQuestion]}`
+                        correctAns.innerHTML = `<i> <strong> Correct Response : </strong> ${correctResponse[currentQuestion]}</i>`
+                        correctAns.classList.add('d-none')
+                        wrongAns.innerHTML = `<i> <strong> Wrong Response : </strong> ${wrongResponse[currentQuestion]}</i>`
+                        wrongAns.classList.add('d-none')
+                        questionText.textContent = `
+     ${questions[currentQuestion]}`;
+                        questionText.classList.add('fw-bold')
+                        quizForm.innerHTML = answers[currentQuestion].map((answer, index) =>
+                                `
+     <label><input type="radio" name="q${currentQuestion + 1}" value="${(index === 0) ? "a" : "b"}"> ${answer}</label>
+    <br>`).join("");
+                        addEventListenersToRadioInputs();
+                }
+
+
+
+                function calculateScore() {
+                        let score = 0;
+                        for (let i = 0; i < userAnswers.length; i++) {
+                                if (userAnswers[i])
+                                        if (userAnswers[i] === correctAnswers[i]) {
+                                                score++;
+                                        }
+                        }
+
+                        displayResult(score);
+                }
+
+
+
+
+                function displayResult(score) {
+                        const resultHTML = `
+                <p class="c1">
+                        <span class="c6 c4">
+                                <strong>Scenario Conclusion</strong>
+                        </span>
+                </p>
+                <p class="c1 c3">
+                        <span class="c0"></span>
+                </p>
+                <div class="text-center"><img src="./Images/Module 8/Interactive elements/7.png" width="720" alt=""
+                                class="img-fluid rounded center">
+                </div>
+                <p class="c1 c3 text-center mt-3 fs-3 fw-bold">
+                        <span class="c0">
+                                Congratulations on completing the scenario.
+                        </span>
+                </p>
+    `;
+
+                        resultContainer.innerHTML = resultHTML;
+                        resultContainer.style.display = "block";
+                        nextCarousel.classList.add('d-none');
+                }   
         </script>
 </body>
 

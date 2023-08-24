@@ -1282,9 +1282,32 @@
                 </div>
                 <!-- End Tab -->
                 <br>
+                <h2>
+                        Scenario: Driving in Adverse Weather Conditions
+                </h2>
+                <p>
+                        <strong>
+                                Let’s consider some scenarios on "Driving in Adverse Weather Conditions." You’ll explore
+                                the
+                                essential aspects of identifying and managing risks while driving.
+                        </strong>
+                </p>
+                <br>
+                <div id="first-carousel">
+                        <p class="c1"><span class="c0"> <strong> <i>Let's begin!</i></strong></span></p>
+                        <p class="c1 c3"><span class="c0"></span></p>
+                        <div class="text-center"><img src="./Images/Module 6/Interactive elements/1.png" width="720"
+                                        alt="" class="img-fluid rounded center">
+                        </div>
+                        <div class="d-flex">
+                                <button type="button" id="first-button" class="btn shadow my-3 mx-auto"
+                                        style="background-color: #A4A9AC;">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                        </div>
+                </div>
 
-
-                <div class="">
+                <div id="next-carousel" class="d-none">
                         <div class="d-md-block">
                                 <h3 class="text-center text-primary underline" id="scenario-title"><strong> Weather
                                                 Conditions
@@ -1293,7 +1316,7 @@
                         </div>
                         <div class="text-center">
 
-                                <img src="./Images/Module 4/Interactive Elements/2.png" width="720" alt=""
+                                <img src="./Images/Module 6/Interactive elements/2.png" width="720" alt=""
                                         class="img-fluid rounded center" id="scenario-img">
                         </div>
                         <br>
@@ -1347,11 +1370,11 @@
                                         </div>
                                 </div>
 
-                                <div id="result" style="display: none;"></div>
                         </div>
 
                 </div>
 
+                <div id="result" style="display: none;"></div>
                 <br>
                 <hr>
                 <h2>
@@ -1407,7 +1430,9 @@
                 });
 
 
-
+                const firstCarousel = document.getElementById("first-carousel");
+                const nextCarousel = document.getElementById("next-carousel");
+                const firstButton = document.getElementById("first-button")
                 const correctAns = document.getElementById("correct-ans");
                 const wrongAns = document.getElementById("wrong-ans");
                 const scenarioTitle = document.getElementById("scenario-title");
@@ -1418,20 +1443,27 @@
                 const nextButton = document.getElementById("next-button");
                 const resultContainer = document.getElementById("result");
 
+
+
+
+                firstButton.addEventListener("click", () => {
+                        console.log("clicked first button");
+                        firstCarousel.classList.add("d-none");
+                        nextCarousel.classList.remove('d-none');
+                })
+
                 let currentQuestion = 0;
                 let userAnswers = [];
 
                 const title = [
                         "Weather Conditions",
                         "Road Conditions",
-                        "Vehicle-Related Hazards",
-                        "Distracted Driving"
+                        "Vehicle-Related Hazards"
                 ]
                 const image = [
-                        "./Images/Module 4/Interactive Elements/2.png",
-                        "./Images/Module 4/Interactive Elements/3.png",
-                        "./Images/Module 4/Interactive Elements/4.png",
-                        "./Images/Module 4/Interactive Elements/5.png"
+                        "./Images/Module 6/Interactive elements/2.png",
+                        "./Images/Module 6/Interactive elements/3.png",
+                        "./Images/Module 6/Interactive elements/4.png",
                 ]
                 const questions = [
                         "You're driving on a highway during a heavy rainstorm. The road is wet, and visibility is reduced. What should you do? ",
@@ -1449,7 +1481,7 @@
                         [" Reduce your speed, maintain a safe following distance, and proceed to the nearest repair facility.", " Continue driving and rely on downshifting gears to slow down the vehicle when necessary."]
                 ];
 
-                const correctAnswers = ["b", "b", "b", "a"];
+                const correctAnswers = ["a", "a", "a"];
 
                 const correctResponse = [
                         "Well done! Reducing your speed,increasing your following distance, and using windshield wipers and headlights is the correct response.These actions enhance your visibility and allow for better control and reaction to potential hazards in challenging weather conditions.",
@@ -1463,7 +1495,6 @@
                         "Not quite. Continuing to drive at your current speed and relying solely on your vehicle's traction control system may not be sufficient to handle icy road conditions. It's crucial to slow down and adjust your driving to the road conditions to ensure safety.",
                         "Not quite. Continuing to drive and relying on downshifting gears to slow down the vehicle may not provide sufficient braking power in an emergency. It's crucial to reduce your speed, maintain a safe following distance, and address the brake issue promptly for your safety and the safety of others."
                 ]
-
 
 
 
@@ -1525,15 +1556,16 @@
                 function updateQuestion() {
                         scenarioTitle.textContent = `${title[currentQuestion]}`
                         scenarioImg.src = `${image[currentQuestion]}`
-                        correctAns.textContent = `Correct Response : ${correctResponse[currentQuestion]}`
+                        correctAns.innerHTML = `<i> <strong> Correct Response : </strong> ${correctResponse[currentQuestion]}</i>`
                         correctAns.classList.add('d-none')
-                        wrongAns.textContent = `Wrong Response: ${wrongResponse[currentQuestion]}`
+                        wrongAns.innerHTML = `<i> <strong> Wrong Response : </strong> ${wrongResponse[currentQuestion]}</i>`
                         wrongAns.classList.add('d-none')
                         questionText.textContent = `
              ${questions[currentQuestion]}`;
-                        quizForm.innerHTML = answers[currentQuestion].map(answer =>
+                        questionText.classList.add('fw-bold')
+                        quizForm.innerHTML = answers[currentQuestion].map((answer, index) =>
                                 `
-            <label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label>
+             <label><input type="radio" name="q${currentQuestion + 1}" value="${(index === 0) ? "a" : "b"}"> ${answer}</label>
             <br>`).join("");
                         addEventListenersToRadioInputs();
                 }
@@ -1543,28 +1575,42 @@
                 function calculateScore() {
                         let score = 0;
                         for (let i = 0; i < userAnswers.length; i++) {
-                                if (userAnswers[i] === correctAnswers[i]) {
-                                        score++;
-                                }
+                                if (userAnswers[i])
+                                        if (userAnswers[i] === correctAnswers[i]) {
+                                                score++;
+                                        }
                         }
 
                         displayResult(score);
                 }
 
+
+
+
                 function displayResult(score) {
                         const resultHTML = `
-                <h2>Your Quiz Result:</h2>
-                <p>You scored ${score} out of ${questions.length}.</p>
-                <h3>Here are your answers:</h3>
-                <ul>
-                    ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
-                </ul>
-                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+                        <p class="c1">
+                                <span class="c6 c4">
+                                        <strong>Scenario Conclusion</strong>
+                                </span>
+                        </p>
+                        <p class="c1 c3">
+                                <span class="c0"></span>
+                        </p>
+                        <div class="text-center"><img src="./Images/Module 12/Interactive elements/7.png" width="720" alt=""
+                                        class="img-fluid rounded center">
+                        </div>
+                        <p class="c1 c3 text-center mt-3 fs-3 fw-bold">
+                                <span class="c0">
+                                        Congratulations on completing the scenario.
+                                </span>
+                        </p>
+                        
             `;
 
                         resultContainer.innerHTML = resultHTML;
                         resultContainer.style.display = "block";
-                        questionContainer.style.display = "none";
+                        nextCarousel.classList.add('d-none');
                 }   
         </script>
 </body>

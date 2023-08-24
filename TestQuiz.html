@@ -185,7 +185,11 @@
 
         function updateQuestion() {
             questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
-            quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
+            quizForm.innerHTML = answers[currentQuestion].map(answer => {
+                console.log(answer);
+                `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`
+            }
+            ).join("");
             // nextButton.style.display = "block"; // Show next button after updating the question
         }
 
