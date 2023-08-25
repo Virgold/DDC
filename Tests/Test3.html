@@ -67,7 +67,7 @@
         </div>
         <div class="d-flex pb-4 mt-5">
             <button class="btn btn-primary me-auto">
-                <a href="./TestQuiz.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 2</a>
+                <a href="./Test2.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 2</a>
             </button>
             <button class="btn btn-primary align-items-center justify-items-center">
                 <a href="./Test4.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 4</a>
@@ -280,7 +280,12 @@
                 <ul>
                     ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
                 </ul>
-                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+
+                <p class="c1 c3 text-center mt-3 fs-3 fw-bold">
+                        <span class="c0">
+                            Congratulations on completing the Texas 6-Hour Driving Course!
+                        </span>
+                </p>
             `;
 
             resultContainer.innerHTML = resultHTML;

@@ -86,7 +86,7 @@
                 <a href="./mod14.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN TO COURSE</a>
             </button>
             <button class="btn btn-primary align-items-center justify-items-center">
-                <a href="./TestQuiz.html" target="_blank" rel="noopener noreferrer" class="text-light">GO TO TEST</a>
+                <a href="./Tests/Test2.html" target="_blank" rel="noopener noreferrer" class="text-light">GO TO TEST</a>
             </button>
         </div>
     </div>
@@ -195,7 +195,6 @@
         function updateQuestion() {
             questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
             quizForm.innerHTML = answers[currentQuestion].map(answer => `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`).join("");
-            // nextButton.style.display = "block"; // Show next button after updating the question
         }
 
         function calculateScore() {

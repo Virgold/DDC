@@ -68,7 +68,7 @@
         </div>
         <div class="d-flex pb-4 mt-5">
             <button class="btn btn-primary me-auto">
-                <a href="./mod15.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN TO QUIZ</a>
+                <a href="../mod15.html" target="_blank" rel="noopener noreferrer" class="text-light">RETURN TO QUIZ</a>
             </button>
             <button class="btn btn-primary align-items-center justify-items-center">
                 <a href="./Test3.html" target="_blank" rel="noopener noreferrer" class="text-light">TEST 3</a>
@@ -140,7 +140,7 @@
             ["a) Better mental and physical health", "b) Increased stress", "c) Higher fatality", "d) Engine breakdown"],
             ["a) Addresses post-collision procedures", "b) Knowledge how to address emergencies", "c) Help reduce travel time", "d) Proactive approach that focuses on anticipating and avoiding potential hazards"],
             ["a) Motorcyclists", "b) Drivers", "c) Pedestrians", "d) Cyclists"],
-            ["a) Speeding, distracted driving, and drunk driving", "b) Conversation with other passengers", "c) Failing to notice traffic signs"],
+            ["a) Too many vehicles on the road", "b) Speeding, distracted driving, and drunk driving", "c) Conversation with other passengers", "d) Failing to notice traffic signs"],
             ["a) One person every day", "b) One person in every 5 hours", "c) One person in every 1 hour and 57 minutes", "d) One person in every 8 hours"],
             ["a) Proper driving techniques and following distances", "b) Best tint for your glass", "c) Best weather conditions to drive in", "d) How to prolong electric vehicle mileage"],
             ["a) Limit the number of aggressive drivers on the road", "b) Improve self-management of drivers", "c) Gives driver better vehicular control and increased reaction time", "d) Help lessen hydroplaning"],
@@ -171,6 +171,7 @@
         const correctAnswers = ["a", "a", "d", "a", "b", "b", "a", "c", "d", "a", "c", "a", "c", "b", "a", "c", "b", "b", "a", "c", "c", "b", "b", "c", "c", "d", "b", "a", "c", "a", "a"];
 
         nextButton.addEventListener("click", () => {
+            console.log("clicked next button");
             const selectedOption = document.querySelector(`input[name=q${currentQuestion + 1}]:checked`);
             if (selectedOption) {
                 userAnswers.push(selectedOption.value);
@@ -184,13 +185,16 @@
         });
 
         function updateQuestion() {
+            console.log("there should be an update from next");
+            console.log(quizForm);
             questionText.textContent = `Question ${currentQuestion + 1}: ${questions[currentQuestion]}`;
             quizForm.innerHTML = answers[currentQuestion].map(answer => {
                 console.log(answer);
+                return (
                 `<label><input type="radio" name="q${currentQuestion + 1}" value="${answer.charAt(0).toLowerCase()}"> ${answer}</label><br>`
-            }
+             ) }
             ).join("");
-            // nextButton.style.display = "block"; // Show next button after updating the question
+
         }
 
         function calculateScore() {
@@ -212,7 +216,12 @@
                 <ul>
                     ${userAnswers.map((answer, index) => `<li>Question ${index + 1}: ${answer}</li>`).join("")}
                 </ul>
-                <p>Congratulations on completing the Texas 6-Hour Driving Course!</p>
+                <p class="c1 c3 text-center mt-3 fs-3 fw-bold">
+                        <span class="c0">
+                            Congratulations on completing the Texas 6-Hour Driving Course!
+                        </span>
+                </p>
+               
             `;
 
             resultContainer.innerHTML = resultHTML;
